@@ -85,7 +85,7 @@ public class SetPolicyAction extends PerfAction {
         Stream<URI> noPolicyPaths = Stream.of(noPolicySet.getSmallFile(), noPolicySet.getLargeFile());
 
         //attempt to connect to Palisade
-        final InputStream stream = StreamUtil.openStream(SetPolicyAction.class, System.getProperty(ConfigUtils.CONFIG_SERVICE_PATH));
+        final InputStream stream = StreamUtil.openStream(SetPolicyAction.class, System.getenv(ConfigUtils.CONFIG_SERVICE_PATH));
         ConfigurationService configService = JSONSerialiser.deserialise(stream, ConfigurationService.class);
         ClientConfiguredServices cs = new ClientConfiguredServices(configService);
 

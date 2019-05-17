@@ -143,6 +143,7 @@ public final class Util {
      */
     public static <T> Stream<T> applyRulesToStream(final Stream<T> records, final User user, final Context context, final Rules<T> rules) {
         Objects.requireNonNull(records);
+
         if (isNull(rules) || isNull(rules.getRules()) || rules.getRules().isEmpty()) {
             return records;
         }

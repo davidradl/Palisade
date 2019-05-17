@@ -101,8 +101,8 @@ public class PerfCollector {
 
         print.println("All times in seconds.\n");
         //build format strings
-        StringBuilder header = new StringBuilder("%-20s");
-        StringBuilder rows = new StringBuilder("%-20s");
+        StringBuilder header = new StringBuilder("%-30s");
+        StringBuilder rows = new StringBuilder("%-30s");
         Arrays.stream(COL_HDRS)
                 .skip(1) //skip "test" column
                 .forEach(ignore -> {

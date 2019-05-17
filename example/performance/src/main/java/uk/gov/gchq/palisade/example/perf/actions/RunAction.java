@@ -75,7 +75,8 @@ public class RunAction extends PerfAction {
         addTrial(new ReadLargeWithPolicyTrial());
         addTrial(new RequestOnlyTrial(1));
         addTrial(new ReadSmallFileTrial(1));
-        addTrial(new StreamSmallWithPolicyTrial(1));
+        //following test is unreliable so removing for now
+      //  addTrial(new StreamSmallWithPolicyTrial(1));
     }
 
     /**
@@ -111,7 +112,7 @@ public class RunAction extends PerfAction {
 
         testsToRun.entrySet().stream()
                 .forEach(e -> {
-                    help.append(String.format("\t%20s\t%s%n", e.getValue().name(), Objects.toString(e.getValue().description(), "no description")));
+                    help.append(String.format("\t%-30s\t%s%n", e.getValue().name(), Objects.toString(e.getValue().description(), "no description")));
                 });
 
         return help.toString();
