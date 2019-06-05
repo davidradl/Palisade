@@ -56,6 +56,9 @@ To run the example locally in JVMs follow these steps (from the root of the proj
     ```bash
       ./example/deployment/local-jvm/bash-scripts/startDataService.sh
     ```
+    ```bash
+      ./example/deployment/local-jvm/bash-scripts/startAuditService.sh
+    ```
     
     You will need to wait until all the REST services have successfully started in tomcat. 
     You should see 6 messages like:

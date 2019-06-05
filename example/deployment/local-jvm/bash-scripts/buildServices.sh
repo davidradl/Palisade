@@ -6,3 +6,4 @@ mvn clean install -Pexample-rest-resource-service -pl :example-rest-resource-ser
 mvn clean install -Pexample-rest-user-service -pl :example-rest-user-service -Dstandalone-path=user -Dstandalone-port=8083
 mvn clean install -Pexample-rest-data-service -pl :example-rest-data-service -Dstandalone-path=data -Dstandalone-port=8084
 mvn clean install -Pexample-rest-config-service -pl :example-rest-config-service -Dstandalone-path=config -Dstandalone-port=8085
+mvn clean install -Pexample-rest-audit-service -pl :example-rest-audit-service -Dstandalone-path=config -Dstandalone-port=8086

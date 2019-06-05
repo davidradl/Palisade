@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import uk.gov.gchq.palisade.audit.service.AuditService;
+import uk.gov.gchq.palisade.audit.service.impl.LoggerAuditService;
 import uk.gov.gchq.palisade.cache.service.CacheService;
 import uk.gov.gchq.palisade.config.service.ConfigurationService;
 import uk.gov.gchq.palisade.config.service.request.AddConfigRequest;
@@ -114,6 +115,9 @@ public class ServicesConfigurator {
 
         // write the config for the data service to the config service
         writeServerConfiguration(configClient, createDataServiceForServer(), DataService.class);
+
+        // write the config for the audit service to the config service
+        writeServerConfiguration(configClient, createAuditServiceForServer(), AuditService.class);
 
         // write the rest redirection for the data service redirection to the config service
         writeServerConfiguration(configClient, createRESTRedirectorForServer(), RESTRedirector.class);
@@ -226,6 +230,15 @@ public class ServicesConfigurator {
      */
     protected PolicyService createPolicyServiceForServer() {
         return new HierarchicalPolicyService().cacheService(clientServices.createInternalCacheService());
+    }
+
+    /**
+     * A method for creating a audit service as it would be configured as a standalone micro-service (server)
+     *
+     * @return a audit service as it would be configured as a standalone micro-service (server)
+     */
+    protected AuditService createAuditServiceForServer() {
+        return new LoggerAuditService();
     }
 
     /**

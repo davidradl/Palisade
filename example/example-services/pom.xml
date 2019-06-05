@@ -27,6 +27,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>example-rest-audit-service</module>
         <module>example-rest-config-service</module>
         <module>example-rest-user-service</module>
         <module>example-rest-resource-service</module>

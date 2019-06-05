@@ -21,3 +21,7 @@ fi
 "${LOCALJVMBASHSCRIPTS}/startDataService.sh" &
 "${GENERICSCRIPTS}/waitForHost.sh" http://localhost:8081/policy/v1/status "${GENERICSCRIPTS}/waitForHost.sh" http://localhost:8082/resource/v1/status \
      "${GENERICSCRIPTS}/waitForHost.sh" http://localhost:8083/user/v1/status "${LOCALJVMBASHSCRIPTS}/configureExamples.sh"
+
+
+#TODO gjm
+#startauditservice.sh

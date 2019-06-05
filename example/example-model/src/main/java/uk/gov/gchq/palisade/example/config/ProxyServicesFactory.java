@@ -20,7 +20,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import uk.gov.gchq.palisade.audit.service.AuditService;
-import uk.gov.gchq.palisade.audit.service.impl.LoggerAuditService;
 import uk.gov.gchq.palisade.cache.service.CacheService;
 import uk.gov.gchq.palisade.cache.service.impl.EtcdBackingStore;
 import uk.gov.gchq.palisade.cache.service.impl.SimpleCacheService;
@@ -32,8 +31,10 @@ import uk.gov.gchq.palisade.policy.service.PolicyService;
 import uk.gov.gchq.palisade.resource.service.ResourceService;
 import uk.gov.gchq.palisade.resource.service.impl.ProxyRestResourceService;
 import uk.gov.gchq.palisade.rest.ProxyRestConnectionDetail;
+//import uk.gov.gchq.palisade.rest.ProxyRestService;
 import uk.gov.gchq.palisade.service.ConnectionDetail;
 import uk.gov.gchq.palisade.service.PalisadeService;
+import uk.gov.gchq.palisade.service.impl.ProxyRestAuditService;
 import uk.gov.gchq.palisade.service.impl.ProxyRestPalisadeService;
 import uk.gov.gchq.palisade.service.impl.ProxyRestPolicyService;
 import uk.gov.gchq.palisade.user.service.UserService;
@@ -70,7 +71,7 @@ public class ProxyServicesFactory {
      * @return true if the correct number of arguments are present
      */
     private boolean validateArguments(final String[] args) {
-        if (args.length > 8) {
+        if (args.length > 9) {
             return true;
         } else {
             LOGGER.error("error not enough arguments have been provided. The following arguments are required:\n" +
@@ -81,8 +82,9 @@ public class ProxyServicesFactory {
                     "5. the internal url for the user service\n" +
                     "6. the internal url for the data service\n" +
                     "7. the internal url for the config service\n" +
-                    "8. the externally accessible url for the palisade service (for clients)\n" +
-                    "9. the externally accessible url for the data service (for clients)");
+                    "8. the internal url for the audit service\n" +
+                    "9. the externally accessible url for the palisade service (for clients)\n" +
+                    "10. the externally accessible url for the data service (for clients)");
             return false;
         }
     }
@@ -107,9 +109,6 @@ public class ProxyServicesFactory {
         return cacheService;
     }
 
-    public AuditService createInternalAuditService() {
-        return new LoggerAuditService();
-    }
 
     public ConfigurationService createInternalConfigService() {
         return new ProxyRestConfigService(args[6]);
@@ -136,6 +135,10 @@ public class ProxyServicesFactory {
     }
 
     public PalisadeService createClientPalisadeService() {
-        return new ProxyRestPalisadeService(args[7]);
+        return new ProxyRestPalisadeService(args[8]);
+    }
+
+    public AuditService createInternalAuditService() {
+        return new ProxyRestAuditService(args[7]);
     }
 }

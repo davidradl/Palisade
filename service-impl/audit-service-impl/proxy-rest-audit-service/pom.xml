@@ -19,22 +19,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>uk.gov.gchq.palisade</groupId>
-        <artifactId>service-impl</artifactId>
+        <artifactId>audit-service-impl</artifactId>
         <version>0.2.1-SNAPSHOT</version>
     </parent>
-    <artifactId>audit-service-impl</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>logger-audit-service</module>
-        <module>proxy-rest-audit-service</module>
-        <module>rest-audit-service</module>
-    </modules>
+    <artifactId>proxy-rest-audit-service</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>audit-service</artifactId>
+            <artifactId>proxy-rest-service</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>common</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
