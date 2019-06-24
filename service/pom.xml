@@ -36,5 +36,6 @@
         <module>rest-service</module>
         <module>config-service</module>
         <module>redirector-service</module>
+        <module>discovery-service</module>
     </modules>
 </project>
