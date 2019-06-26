@@ -6,4 +6,8 @@
 
 <suppressions>
     <suppress checks="." files="io[\\/]etcd[\\/]jetcd[\\/]launcher"/>
+    <suppress checks="FinalClass"
+              files="^.*Application.java"/>
+    <suppress checks="HideUtilityClassConstructor"
+              files="^.*Application.java"/>
 </suppressions>
