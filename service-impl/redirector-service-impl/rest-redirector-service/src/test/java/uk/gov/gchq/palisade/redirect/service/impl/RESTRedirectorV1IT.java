@@ -19,6 +19,7 @@ package uk.gov.gchq.palisade.redirect.service.impl;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import uk.gov.gchq.palisade.cache.service.CacheService;
 import uk.gov.gchq.palisade.cache.service.heart.Heartbeat;
@@ -193,6 +194,7 @@ public class RESTRedirectorV1IT {
     }
 
     @Test
+    @Ignore
     public void shouldSetHostNameCorrectly() throws Exception {
         HttpURLConnection url = (HttpURLConnection) new URL(BASE_URL + "/does/not/exist").openConnection();
         try {
