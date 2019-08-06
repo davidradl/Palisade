@@ -18,7 +18,7 @@
     <!-- Activating the aws profile ensures the Amazon Web Services s3a connector is available in Palisade. -->
 
     <properties>
-        <start-class>uk.gov.gchq.palisade.example.runner.RestExample</start-class>
+        <start-class>uk.gov.gchq.palisade.example.AwsEmrMapReduceExample</start-class>
     </properties>
 
     <profiles>
@@ -393,11 +393,22 @@
                                     <resource>META-INF/spring.schemas</resource>
                                 </transformer>
                                 <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"/>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer">
-                                    <mainClass>${start-class}</mainClass>
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Main-Class>${start-class}</Main-Class>
+                                        <X-Compile-Source-JDK>1.8</X-Compile-Source-JDK>
+                                        <X-Compile-Target-JDK>1.8</X-Compile-Target-JDK>
+                                    </manifestEntries>
                                 </transformer>
+                                <!--<transformer-->
+                                <!--implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer">-->
+                                <!--&lt;!&ndash;<Main-Class>${start-class}</Main-Class>&ndash;&gt;-->
+                                <!--<manifestEntries>-->
+                                <!--<Main-Class>${start-class}</Main-Class>-->
+                                <!--<X-Compile-Source-JDK>1.8</X-Compile-Source-JDK>-->
+                                <!--<X-Compile-Target-JDK>1.8</X-Compile-Target-JDK>-->
+                                <!--</manifestEntries>-->
+                                <!--</transformer>-->
                             </transformers>
                         </configuration>
                     </execution>
