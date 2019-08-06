@@ -74,6 +74,7 @@
                         <id>build-info</id>
                         <goals>
                             <goal>build-info</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
