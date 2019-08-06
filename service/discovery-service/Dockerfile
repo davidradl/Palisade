@@ -1,4 +1,5 @@
 FROM openjdk:11
+VOLUME /tmp
 
 ARG JAR_FILE
 

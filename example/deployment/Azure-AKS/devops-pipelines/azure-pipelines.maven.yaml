@@ -1,6 +1,14 @@
+variables:
+  base_docker_url: $(dockerId).azurecr.io/
+
 jobs:
 - job: Maven_build_services
   steps:
+
+  - bash: echo $BASE_DOCKER_URL
+  - script: az acr login --name $(dockerId) --username $(dockerId) --password $(pswd)
+    displayName: 'login to container register'
+
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'

@@ -263,6 +263,30 @@
     <build>
         <plugins>
             <plugin>
+                <!-- version_palisade required temporarily for pom files with parents that are not palisade - this includes the discovery service -->
+                <!--the longer solution will be to split up the microservice based module hierachy -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>set version</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>env</executable>
+                    <environmentVariables>
+                        <version_palisade>
+                            ${project.version}
+                        </version_palisade>
+                    </environmentVariables>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler.plugin.version}</version>
