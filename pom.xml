@@ -125,6 +125,10 @@
         <scm.developer.connection>
             scm:git:https://github.com/gchq/Palisade.git
         </scm.developer.connection>
+
+        <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <current.build.date>${maven.build.timestamp}</current.build.date>
+
     </properties>
 
     <scm>
@@ -263,28 +267,25 @@
     <build>
         <plugins>
             <plugin>
-                <!-- version_palisade required temporarily for pom files with parents that are not palisade - this includes the discovery service -->
-                <!--the longer solution will be to split up the microservice based module hierachy -->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
                 <executions>
                     <execution>
-                        <id>set version</id>
                         <phase>validate</phase>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>run</goal>
                         </goals>
+                        <configuration>
+                            <target>
+                                <propertyfile file="version.properties" comment="Version information">
+                                    <entry key="version_palisade" value="${version}"/>
+                                    <entry key="current.build.date" value="${current.build.date}"/>
+                                </propertyfile>
+                            </target>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <executable>env</executable>
-                    <environmentVariables>
-                        <version_palisade>
-                            ${project.version}
-                        </version_palisade>
-                    </environmentVariables>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

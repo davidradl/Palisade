@@ -72,11 +72,44 @@
     </dependencies>
 
     <build>
+        <!--<resources>-->
+        <!--<resource>-->
+        <!--<directory>../..</directory>-->
+        <!--<filtering>true</filtering>-->
+        <!--<includes>-->
+        <!--<include>**/version.properties</include>-->
+        <!--</includes>-->
+        <!--</resource>-->
+        <!--</resources>-->
+
+        <finalName>${project.name}-${version_palisade}</finalName>
+
+
         <plugins>
+            <plugin>
+                <!--since the parent of this pom.xml is the spring boot starter project - we need to pull in the version number as a property-->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>../../version.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
                 <configuration>
                     <environmentVariables>
                         <BASE_DOCKER_URL/>
@@ -137,7 +170,7 @@
                                 <condition property="dockerhub" value="${env.BASE_DOCKER_URL}" else="">
                                     <isset property="env.BASE_DOCKER_URL"/>
                                 </condition>
-                                <echo message="Hello Hello ${dockerhub}"/>
+                                <echo message="Hello Hello ${dockerhub} ${project.build.finalName} ${build.finalName} ${pom.build.finalName}"/>
                             </target>
                         </configuration>
                     </execution>
@@ -159,12 +192,15 @@
                 </executions>
                 <configuration>
                     <repository>${dockerhub}discovery-service</repository>
+                    <dockerfile>Dockerfile</dockerfile>
                     <tag>${version_palisade}</tag>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 </project>
