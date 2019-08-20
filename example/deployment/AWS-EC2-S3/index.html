@@ -1,0 +1,1287 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>AWS EC2 Deployment · Palisade Doc</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../AWS-EMR/" />
+    
+    
+    <link rel="prev" href="../local-k8s/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../doc/other/ways_of_working.html">
+            
+                <a href="../../../doc/other/ways_of_working.html">
+            
+                    
+                    Ways of Working
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../doc/developer-guide/developer_guide.html">
+            
+                <a href="../../../doc/developer-guide/developer_guide.html">
+            
+                    
+                    Developer Guide
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../../doc/developer-guide/initial_requirements.html">
+            
+                <a href="../../../doc/developer-guide/initial_requirements.html">
+            
+                    
+                    Initial Requirements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../../doc/developer-guide/design_principles.html">
+            
+                <a href="../../../doc/developer-guide/design_principles.html">
+            
+                    
+                    Design Principles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../../doc/developer-guide/high_level_architecture.html">
+            
+                <a href="../../../doc/developer-guide/high_level_architecture.html">
+            
+                    
+                    High level architectural diagram
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../../doc/developer-guide/map_reduce_architecture.html">
+            
+                <a href="../../../doc/developer-guide/map_reduce_architecture.html">
+            
+                    
+                    High level architecture using a map reduce client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../../doc/developer-guide/component_descriptions.html">
+            
+                <a href="../../../doc/developer-guide/component_descriptions.html">
+            
+                    
+                    Description of each component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../../doc/developer-guide/read_process.html">
+            
+                <a href="../../../doc/developer-guide/read_process.html">
+            
+                    
+                    Standard flow for a read request through the Palisade system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../../doc/developer-guide/deployment_ideas.html">
+            
+                <a href="../../../doc/developer-guide/deployment_ideas.html">
+            
+                    
+                    How might the system be deployed?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../../doc/developer-guide/security_considerations.html">
+            
+                <a href="../../../doc/developer-guide/security_considerations.html">
+            
+                    
+                    Security considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../../../doc/developer-guide/roadmap.html">
+            
+                <a href="../../../doc/developer-guide/roadmap.html">
+            
+                    
+                    Roadmap for Palisade
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../../doc/possible_clients.html">
+            
+                <a href="../../../doc/possible_clients.html">
+            
+                    
+                    Possible Client Use Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../../service/">
+            
+                <a href="../../../service/">
+            
+                    
+                    Services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../../service/audit-service/">
+            
+                <a href="../../../service/audit-service/">
+            
+                    
+                    Audit Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../../service/cache-service/">
+            
+                <a href="../../../service/cache-service/">
+            
+                    
+                    Cache Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../../service/data-service/">
+            
+                <a href="../../../service/data-service/">
+            
+                    
+                    Data Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../../service/redirector-service/">
+            
+                <a href="../../../service/redirector-service/">
+            
+                    
+                    Redirector Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../../service/palisade-service/">
+            
+                <a href="../../../service/palisade-service/">
+            
+                    
+                    Palisade Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../../service/policy-service/">
+            
+                <a href="../../../service/policy-service/">
+            
+                    
+                    Policy Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../../service/resource-service/">
+            
+                <a href="../../../service/resource-service/">
+            
+                    
+                    Resource Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../../../service/user-service/">
+            
+                <a href="../../../service/user-service/">
+            
+                    
+                    User Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../../../service/config-service/">
+            
+                <a href="../../../service/config-service/">
+            
+                    
+                    Config Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Examples
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../hr-data-generator/">
+            
+                <a href="../../hr-data-generator/">
+            
+                    
+                    HR Data Generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../example-services/">
+            
+                <a href="../../example-services/">
+            
+                    
+                    Example Services
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../performance/">
+            
+                <a href="../../performance/">
+            
+                    
+                    Performance Test Harness
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../local-jvm/">
+            
+                <a href="../local-jvm/">
+            
+                    
+                    Local JVM Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../local-docker/">
+            
+                <a href="../local-docker/">
+            
+                    
+                    Local Docker Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../local-k8s/">
+            
+                <a href="../local-k8s/">
+            
+                    
+                    Local Kubernetes Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    AWS EC2 Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../AWS-EMR/">
+            
+                <a href="../AWS-EMR/">
+            
+                    
+                    AWS-EMR Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../Azure-AKS/">
+            
+                <a href="../Azure-AKS/">
+            
+                    
+                    Azure-AKS Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../../library/">
+            
+                <a href="../../../library/">
+            
+                    
+                    Libraries
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../../library/shade-hadoop-client/">
+            
+                <a href="../../../library/shade-hadoop-client/">
+            
+                    
+                    Shaded Hadoop Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../../library/koryphe-library/">
+            
+                <a href="../../../library/koryphe-library/">
+            
+                    
+                    Koryphe
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../../client-impl/">
+            
+                <a href="../../../client-impl/">
+            
+                    
+                    Client Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../../client-impl/cat-client/">
+            
+                <a href="../../../client-impl/cat-client/">
+            
+                    
+                    Cat client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../../client-impl/mapreduce-client/">
+            
+                <a href="../../../client-impl/mapreduce-client/">
+            
+                    
+                    MapReduce client
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../../service-impl/">
+            
+                <a href="../../../service-impl/">
+            
+                    
+                    Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../../service-impl/audit-service-impl/">
+            
+                <a href="../../../service-impl/audit-service-impl/">
+            
+                    
+                    Audit Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../../../service-impl/audit-service-impl/logger-audit-service/">
+            
+                <a href="../../../service-impl/audit-service-impl/logger-audit-service/">
+            
+                    
+                    Logger Audit Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../../../service-impl/audit-service-impl/stroom-audit-service/">
+            
+                <a href="../../../service-impl/audit-service-impl/stroom-audit-service/">
+            
+                    
+                    Stroom Audit Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../../service-impl/cache-service-impl/">
+            
+                <a href="../../../service-impl/cache-service-impl/">
+            
+                    
+                    Cache Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../../service-impl/cache-service-impl/simple-cache-service/">
+            
+                <a href="../../../service-impl/cache-service-impl/simple-cache-service/">
+            
+                    
+                    Simple Cache Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../../service-impl/cache-service-impl/hashmap-backing-store/">
+            
+                <a href="../../../service-impl/cache-service-impl/hashmap-backing-store/">
+            
+                    
+                    Hashmap Backing Store
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../../service-impl/cache-service-impl/properties-backing-store/">
+            
+                <a href="../../../service-impl/cache-service-impl/properties-backing-store/">
+            
+                    
+                    Properties Backing Store
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../../service-impl/cache-service-impl/etcd-backing-store/">
+            
+                <a href="../../../service-impl/cache-service-impl/etcd-backing-store/">
+            
+                    
+                    ETCD Backing Store
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../../service-impl/config-service-impl/">
+            
+                <a href="../../../service-impl/config-service-impl/">
+            
+                    
+                    Config Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../../../service-impl/config-service-impl/simple-config-service/">
+            
+                <a href="../../../service-impl/config-service-impl/simple-config-service/">
+            
+                    
+                    Simple Config Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../../service-impl/data-service-impl/">
+            
+                <a href="../../../service-impl/data-service-impl/">
+            
+                    
+                    Data Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../../../service-impl/data-service-impl/simple-data-service/">
+            
+                <a href="../../../service-impl/data-service-impl/simple-data-service/">
+            
+                    
+                    Simple Data Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../../../service-impl/data-service-impl/hadoop-data-service/">
+            
+                <a href="../../../service-impl/data-service-impl/hadoop-data-service/">
+            
+                    
+                    Hadoop Data Reader
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../../../service-impl/palisade-service-impl/">
+            
+                <a href="../../../service-impl/palisade-service-impl/">
+            
+                    
+                    Palisade Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.5.1" data-path="../../../service-impl/palisade-service-impl/simple-palisade-service/">
+            
+                <a href="../../../service-impl/palisade-service-impl/simple-palisade-service/">
+            
+                    
+                    Simple Palisade Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../../../service-impl/policy-service-impl/">
+            
+                <a href="../../../service-impl/policy-service-impl/">
+            
+                    
+                    Policy Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.6.1" data-path="../../../service-impl/policy-service-impl/hierarchical-policy-service/">
+            
+                <a href="../../../service-impl/policy-service-impl/hierarchical-policy-service/">
+            
+                    
+                    Hierarchical Policy Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../../../service-impl/redirector-service-impl/">
+            
+                <a href="../../../service-impl/redirector-service-impl/">
+            
+                    
+                    Redirector Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.7.1" data-path="../../../service-impl/redirector-service-impl/simple-redirector-service/">
+            
+                <a href="../../../service-impl/redirector-service-impl/simple-redirector-service/">
+            
+                    
+                    Simple Redirector Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../../../service-impl/resource-service-impl/">
+            
+                <a href="../../../service-impl/resource-service-impl/">
+            
+                    
+                    Resource Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.8.1" data-path="../../../service-impl/resource-service-impl/hadoop-resource-service/">
+            
+                <a href="../../../service-impl/resource-service-impl/hadoop-resource-service/">
+            
+                    
+                    Hadoop Resource Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../../../service-impl/user-service-impl/">
+            
+                <a href="../../../service-impl/user-service-impl/">
+            
+                    
+                    User Service Implementations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.9.1" data-path="../../../service-impl/user-service-impl/simple-user-service/">
+            
+                <a href="../../../service-impl/user-service-impl/simple-user-service/">
+            
+                    
+                    Simple User Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9.2" data-path="../../../service-impl/user-service-impl/ldap-user-service/">
+            
+                <a href="../../../service-impl/user-service-impl/ldap-user-service/">
+            
+                    
+                    LDAP User Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <a target="_blank" href="ref://doc/javadoc">
+            
+                    
+                    Javadoc
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >AWS EC2 Deployment</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="aws-ec2-example">AWS EC2 Example</h1>
+<p>Example Running on AWS EC2 Instances Accessing Data In An S3 Bucket</p>
+<p>This example demonstrates different users querying an avro file that is stored in an S3 bucket that does not have public access.
+The queries are run from an EC2 instance that does not have access to the S3 bucket, and an attempt to download the avro file from that EC2 machine will fail.
+The queries access Palisade Rest endpoints hosted on a separate EC2 machine where Palisade is running. This second EC2 instance has been granted AWS IAM permissions to list the bucket and also to get, put and delete objects to/from the bucket.
+When you run the example you will see the data has been redacted in line with the rules.
+For an overview of the example see <a href="../../">here</a></p>
+<p>This example runs terraform scripts which will spin up an EC2 instance and install the Palisade services on it. This instance will run in the the Default VPC and default subnet.
+Terraform will also create an S3 bucket and grant IAM permissions on the bucket to a role which is then granted to this EC2 instance running the palisade application.
+Terraform will create a sample data file on this EC2 instance and then upload this file from the EC2 instance to the S3 bucket.</p>
+<p>Terraform will then spin up a second EC2 instance and install the example on this second instance. This instance does not get granted access to the S3 bucket.
+When a user runs the example on the second EC2 instance the example connects to the Rest endpoints of the palisade services running on the first EC2 instance and runs a query as the supplied user.
+Palisade queries the data in the S3 bucket and returns data to the example client redacted accordinging to the appropiate policy rules.</p>
+<h5 id="prerequisites">PREREQUISITES</h5>
+<ul>
+<li>Terraform</li>
+<li>Git </li>
+<li>An AWS Account</li>
+<li>A key pair, with the public key on your AWS account and the private key available locally where you are running the script <runaws-ec2_s3example.sh></runaws-ec2_s3example.sh></li>
+</ul>
+<p>To run this example follow these steps (from the root of the project):</p>
+<ol>
+<li>Compile the code:<pre class="language-"><code class="lang-bash">mvn clean <span class="token function">install</span> -P example,aws
+</code></pre>
+</li>
+<li>Build the executable jars:<pre class="language-"><code class="lang-bash">./example/deployment/local-jvm/bash-scripts/buildServices.sh
+</code></pre>
+</li>
+<li><p>Create the file terraform.tfvars in example/deployment/AWS-EC2-S3/terraform-scripts/InstanceRunningPalisade with content based on this</p>
+<pre class="language-"><code class="lang-bash">project <span class="token operator">=</span> <span class="token string">&quot;PalisadeExample&quot;</span>
+owner <span class="token operator">=</span> <span class="token string">&quot;your_name&quot;</span>
+
+<span class="token comment"># Override the default eu-west-1 if you want</span>
+<span class="token string">&quot;#aws_region&quot;</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>
+
+<span class="token comment"># Set the access and secret key plus token OR the profile name, not both!</span>
+aws_access_key_id <span class="token operator">=</span> <span class="token string">&quot;&lt;Your AWS subscription access key&gt;&quot;</span>
+aws_secret_access_key <span class="token operator">=</span> <span class="token string">&quot;&lt;Your AWS subscription secret key&gt;&quot;</span>
+aws_session_token <span class="token operator">=</span> <span class="token string">&quot;&lt;Your AWS subscription session token&gt;&quot;</span>
+<span class="token comment">#aws_profile_name = &quot;&lt;Your AWS profile name&gt;&quot;</span>
+
+bucket_name <span class="token operator">=</span> <span class="token string">&quot;&lt;Globally unique S3 bucket name&gt;&quot;</span> <span class="token comment">#Only lowercase alphanumeric characters and hypens allowed</span>
+key_name <span class="token operator">=</span> <span class="token string">&quot;&lt;Name of EC2 key pair instance for EC2 cluster&gt;&quot;</span>
+pem_file <span class="token operator">=</span> <span class="token string">&quot;/path/to/created/private/key.pem&quot;</span>
+ingress_ip_range <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;1.2.3.4/32&quot;</span>, <span class="token string">&quot;2.3.4.5/32&quot;</span><span class="token punctuation">]</span>
+instance_name <span class="token operator">=</span> <span class="token string">&quot;PalisadeExample&quot;</span>
+instance_type <span class="token operator">=</span> <span class="token string">&quot;t2.large&quot;</span>
+palisade_version <span class="token operator">=</span> <span class="token string">&quot;&lt;The Version of Palisade you want to run&gt;&quot;</span>
+</code></pre>
+<p>This needs to be populated with the values indicated above before the example will run.</p>
+</li>
+<li><p>Your AWS session token, access key and secret key are specific to your AWS subscription. You can find information on where these are located <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">here</a>. 
+ Alternatively you can setup a named profile according to instructions <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html" target="_blank">here</a>.</p>
+<p> You should set <strong>either</strong> the access and secret keys plus session token <strong>or</strong> a profile name, not both. If you are using shared credentials, the profile name should be in the AWS shared credential file
+ <code>~/.aws/credentials</code> (or <code>%UserProfile%\.aws\credentials</code> on Windows). </p>
+<ol>
+<li>The <code>bucket_name</code> must be a globally unique S3 bucket name of your choosing. Bucket naming rules are <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev//BucketRestrictions.html#bucketnamingrules" target="_blank">here</a>.</li>
+<li><p>You will need to create a key pair which allows you to SSH into the EMR cluster and for Terraform to provision the cluster:</p>
+<ol>
+<li>Create a key pair by logging in and from the AWS console, select Services -&gt; EC2. Then select Key Pairs from the side menu.</li>
+<li>Click &quot;Create Key Pair&quot; which will ask for a name and give you a private certificate to download.</li>
+</ol>
+<p>Put the name of your key pair in the <code>key_name</code> field  as it appears in AWS (no <code>.pem</code> extension).</p>
+</li>
+<li><p><code>pem_file</code> should be the path to the private key create in previous step (ending in <code>.pem</code> extension).</p>
+</li>
+<li>The <code>ingress_ip_range</code> is a list of public IPs that will be able to connect into the EMR cluster. This should be your public IP for your client machine.</li>
+</ol>
+</li>
+<li><p>Create a symbolic link to the above terraform.tfvars file in example/deployment/AWS-EC2-S3/terraform-scripts/InstanceRunningExample</p>
+<pre class="language-"><code class="lang-bash"><span class="token builtin class-name">cd</span> example/deployment/AWS-EC2-S3/terraform-scripts/InstanceRunningExample<span class="token punctuation">;</span> <span class="token function">ln</span> -s <span class="token punctuation">..</span>/InstanceRunningPalisade/terraform.tfvars terraform.tfvars<span class="token punctuation">;</span> <span class="token builtin class-name">cd</span> -
+</code></pre>
+</li>
+<li><p>Run the Terraform to create the two EC2 instances, install and start up Palisade on the first instance, install the example on the second instance and run it.</p>
+<p> <strong>You will start to incur charges to your AWS subscription at this point!</strong></p>
+<pre class="language-"><code class="lang-bash">./example/deployment/AWS-EC2-S3/bash-scripts/runAWS-EC2-S3Example.sh
+</code></pre>
+</li>
+</ol>
+<h4 id="running-the-example">Running the Example</h4>
+<p>After the terraform scripts have run and the 2 instances are up and running, ssh on to the box using the following command:</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">ssh</span> -i <span class="token operator">&lt;</span>Location of your .pem file<span class="token operator">&gt;</span> ec2-user@<span class="token operator">&lt;</span>public DNS of Example box<span class="token operator">&gt;</span>
+</code></pre>
+<p>A quick &quot;ps ax | grep java&quot; will show that no java services are running locally. Meaning that the example will using the Palisade services on the &quot;Services&quot; box.
+To then run the example with the option to display the results based on different users or roles, run this command: </p>
+<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">PALISADE_REST_CONFIG_PATH</span><span class="token operator">=</span><span class="token string">&quot;/home/ec2-user/example/example-model/src/main/resources/configRest.json&quot;</span>
+$ java -cp /home/ec2-user/example/example-model/target/example-model-*-shaded.jar uk.gov.gchq.palisade.example.client.ExampleSimpleClient <span class="token operator">&lt;</span>User<span class="token operator">&gt;</span> s3a://<span class="token operator">&lt;</span>bucket url<span class="token operator">&gt;</span>/employee_file0.avro <span class="token operator">&lt;</span>PURPOSE<span class="token operator">&gt;</span> <span class="token operator">|</span> /home/ec2-user/example/deployment/bash-scripts/formatOutput.sh
+</code></pre>
+<p>The example list of users and purposes are:</p>
+<ul>
+<li>Alice, Bob, Eve</li>
+<li>SALARY, DUTY_OF_CARE, STAFF_REPORT or no purpose by using: &quot;&quot; (double quotes)</li>
+</ul>
+<p>If you want to compare the different outputs of the Palisade service for different users and purposes, you can redirect the output to a text file, such as &quot;&gt; User-PURPOSE.txt&quot;, and then re-run the command with a change in user or purpose and redirect the output to a different file. 
+You can then run:</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">diff</span> file1.txt file2.txt
+</code></pre>
+<p>After demo, run terraform destroy to tear down the two EC2 instances:
+<strong>This will delete everything in your bucket!</strong></p>
+<ol>
+<li>Tear down the instance running the example<pre class="language-"><code class="lang-bash">./example/deployment/AWS-EC2-S3/bash-scripts/destroyTerraform.sh
+</code></pre>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../local-k8s/" class="navigation navigation-prev " aria-label="Previous page: Local Kubernetes Deployment">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../AWS-EMR/" class="navigation navigation-next " aria-label="Next page: AWS-EMR Deployment">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"AWS EC2 Deployment","level":"1.6.7","depth":2,"next":{"title":"AWS-EMR Deployment","level":"1.6.8","depth":2,"path":"example/deployment/AWS-EMR/README.md","ref":"example/deployment/AWS-EMR/README.md","articles":[]},"previous":{"title":"Local Kubernetes Deployment","level":"1.6.6","depth":2,"path":"example/deployment/local-k8s/README.md","ref":"example/deployment/local-k8s/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-interactive","codetabs","prism","-highlight","github","anchorjs","otherlink"],"root":"./","styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/gchq/palisade"},"search":{"maxIndexSize":5000000},"otherlink":{},"codetabs":{},"lunr":{"maxIndexSize":5000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"expandable-chapters-interactive":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"contents.md"},"variables":{},"title":"Palisade Doc","gitbook":"3.x.x"},"file":{"path":"example/deployment/AWS-EC2-S3/README.md","mtime":"2019-08-20T13:07:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-20T13:10:15.163Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-otherlink/js/otherlink.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
